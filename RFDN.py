@@ -13,7 +13,6 @@ class RFDN(nn.Module):
 
         self.fea_conv = B.conv_layer(in_nc, nf, kernel_size=3)
 
-        # IMDBs
         self.B1 = B.RFDB(in_channels=nf)
         self.B2 = B.RFDB(in_channels=nf)
         self.B3 = B.RFDB(in_channels=nf)
