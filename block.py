@@ -5,10 +5,9 @@ import torch.nn.functional as F
 
 
 def conv_layer(in_channels, out_channels, kernel_size, stride=1, dilation=1, groups=1):
-    #wn = lambda x: torch.nn.utils.weight_norm(x)
     padding = int((kernel_size - 1) / 2) * dilation
-    return (nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding=padding, bias=True, dilation=dilation,
-                     groups=groups))
+    return nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding=padding, bias=True, dilation=dilation,
+                     groups=groups)
 
 
 def norm(norm_type, nc):
@@ -134,7 +133,6 @@ class RFDB(nn.Module):
     def __init__(self, in_channels, distillation_rate=0.25):
         super(RFDB, self).__init__()
         self.dc = self.distilled_channels = in_channels//2
-        #self.rc = self.remaining_channels = int(in_channels - self.distilled_channels)
         self.rc = self.remaining_channels = in_channels
         self.c1_d = conv_layer(in_channels, self.dc, 1)
         self.c1_r = conv_layer(in_channels, self.rc, 3)
