@@ -22,7 +22,7 @@ class RFDN(nn.Module):
         self.LR_conv = B.conv_layer(nf, nf, kernel_size=3)
 
         upsample_block = B.pixelshuffle_block
-        self.upsampler = upsample_block(nf, out_nc, upscale_factor=4)
+        self.upsampler = upsample_block(nf, out_nc, upscale_factor=upscale)
         self.scale_idx = 0
 
 
